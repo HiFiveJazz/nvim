@@ -36,7 +36,6 @@ spec "user.neocomposer"       -- Used for macros, press
                               -- "mm" to open the macro menu,
                               -- "mp" to play macro, "ms" to stop a macro!  
 -- Extras
--- spec "user.extras.leetcode"   --  For Practicing Leetcode
 spec "user.extras.remote-sshfs"  --  Adds in sshfs integration into neovim
 spec "user.extras.smear"      -- Animation for cursor, good for lectures! 
 spec "user.extras.glimmer"    -- Animation for yanking, pasting, undo, redo; good for lectures/screensharing code!

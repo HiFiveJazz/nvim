@@ -54,7 +54,7 @@ vim.opt.fillchars:append {
 vim.opt.shortmess:append "c"
 
 vim.cmd "set whichwrap+=<,>,[,],h,l"
-vim.cmd [[set iskeyword+=-]]
+-- vim.cmd [[set iskeyword+=-]] // Bad for C, good for WebDev so enable if you a WebDev
 
 vim.g.netrw_banner = 0
 vim.g.netrw_mouse = 2
