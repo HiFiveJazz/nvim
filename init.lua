@@ -78,7 +78,8 @@ spec "user.extras.todo-comments" -- Adds in various comments, such as the follow
                               -- FAILED:
                               -- TESTING:
 spec "user.extras.crates"     -- Shows updates for Rust Crates
-spec "user.extras.rustacean"     -- Rust LSP integration
+spec "user.extras.rustacean"  -- Rust LSP integration
+spec "user.extras.esp32"      -- ESP32 integration into neovim like VSCode 
 -- spec "user.extras.trouble" -- Jump through errors with keybindings!
 -- spec "user.extras.biscuits" -- Shows the other part of { }
 -- spec "user.extras.bqf"        --"Ctrl-q" while in telescope to add files to harpoon easily
