@@ -25,7 +25,6 @@ function M.config()
   }
 
   require("mason").setup {
-    PATH = "append", -- Makes esp32.nvim happy
   -- registries = {
   --     "file:~/GitHub/mason-registry",
   --   },
