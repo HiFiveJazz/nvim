@@ -20,18 +20,39 @@ M.execs = {
 
 function M.config()
   local wk = require "which-key"
-  wk.add{
-    { "<leader>lm", "<cmd>Mason<cr>", desc = "Mason Info", icon = { icon = " ", color = "blue"}},
+
+  wk.add {
+    {
+      "<leader>lm",
+      "<cmd>Mason<cr>",
+      desc = "Mason Info",
+      icon = { icon = " ", color = "blue" },
+    },
   }
 
   require("mason").setup {
-  -- registries = {
-  --     "file:~/GitHub/mason-registry",
-  --   },
     ui = {
       border = "rounded",
     },
+
+    -- registries = {
+    --   "file:~/GitHub/mason-registry",
+    -- },
   }
+
+  require("mason-lspconfig").setup {
+    ensure_installed = M.execs,
+
+    -- rustaceanvim owns rust-analyzer.
+    -- Keep it installed through Mason, but don't let
+    -- mason-lspconfig start a second LSP client.
+    automatic_enable = {
+      exclude = {
+        "rust_analyzer",
+      },
+    },
+  }
+
   vim.lsp.config("armls", {
     cmd = { "armls" },
     filetypes = { "asm" },
@@ -50,10 +71,7 @@ function M.config()
     },
   })
 
-vim.lsp.enable("armls")
-  require("mason-lspconfig").setup {
-    ensure_installed = M.execs,
-  }
+  vim.lsp.enable("armls")
 end
 
 return M

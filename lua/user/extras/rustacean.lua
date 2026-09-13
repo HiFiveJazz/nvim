@@ -1,70 +1,107 @@
 local M = {
   "mrcjkb/rustaceanvim",
-  -- version = "^6",
-  ft = { "rust" },
+
+  -- Pin to the current major release to avoid unexpected breaking changes.
+  version = "^9",
+
+  -- rustaceanvim implements its own filetype lazy-loading.
+  -- Do not lazy-load it again through lazy.nvim.
+  lazy = false,
 }
 
-function M.config()
-  local lspconfig = require "user.lspconfig"
+function M.init()
+  -- Using a function defers evaluating the configuration until
+  -- rustaceanvim actually initializes for a Rust buffer.
+  vim.g.rustaceanvim = function()
+    local lspconfig = require "user.lspconfig"
 
-  vim.g.rustaceanvim = {
-    tools = {},
-    server = {
+    return {
+      server = {
+        on_attach = function(client, bufnr)
+          lspconfig.on_attach(client, bufnr)
+        end,
 
-      -- cmd = { "rustup", "run", "nightly", "rust-analyzer" },
-      on_attach = function(client, bufnr)
-        -- your global LSP setup (keymaps, etc.)
-        lspconfig.on_attach(client, bufnr)
-        -- enable native inlay hints (new API: enable(boolean, {bufnr=...}))
-        -- pcall(vim.lsp.inlay_hint.enable, true, { bufnr = bufnr })
+        capabilities = lspconfig.common_capabilities(),
 
-      end,
+        -- Disable rust-analyzer status notifications.
+        status_notify_level = false,
 
-      capabilities = lspconfig.common_capabilities(),
+        -- rust-analyzer configuration.
+        default_settings = {
+          ["rust-analyzer"] = {
+            -- Embedded Rust example:
+            --
+            -- check = {
+            --   allTargets = false,
+            -- },
+            --
+            -- cargo = {
+            --   target = "thumbv7em-none-eabihf",
+            -- },
 
-      -- 🔇 disable rust-analyzer status popups (e.g. workspace discovery)
-      status_notify_level = false,  -- same as require("rustaceanvim").disable
+            checkOnSave = true,
 
-      settings = {
-        ["rust-analyzer"] = {
-          -- -- BEGIN: MICROBIT RUST SETTINGS
-          -- check = {
-          --   allTargets = false, -- Avoid checking all targets
-          -- },
-          -- cargo = {
-          --   target = "thumbv7em-none-eabihf", -- Set embedded Rust target
-          -- },
-          -- -- END: MICROBIT RUST SETTINGS
-          -- run checks on save; choose command via `check.command`
-          checkOnSave = true,
-          check = { command = "clippy" }, -- or "check"
+            check = {
+              command = "clippy",
+            },
 
-          lens = { enable = true },
+            lens = {
+              enable = true,
+            },
 
-          -- FLAT inlayHints schema (so hints actually render)
-          inlayHints = {
-            enable = true,
-            -- core toggles
-            chainingHints  = true,
-            parameterHints = true,
-            typeHints      = true,
-            -- fine-tuning
-            renderColons   = true,
-            maxLength      = 25,
-            lifetimeElisionHints       = { enable = "always", useParameterNames = true },
-            closureReturnTypeHints     = { enable = "always" },
-            discriminantHints          = { enable = "always" },
-            expressionAdjustmentHints  = { mode = "prefix", hideOutsideUnsafe = false },
-            rangeExclusiveHints        = true,
-            implicitDrops              = { enable = true },
-            closingBraceHints          = { enable = true, minLines = 25 },
+            inlayHints = {
+              chainingHints = {
+                enable = true,
+              },
+
+              parameterHints = {
+                enable = true,
+              },
+
+              typeHints = {
+                enable = true,
+              },
+
+              renderColons = true,
+              maxLength = 25,
+
+              lifetimeElisionHints = {
+                enable = "always",
+                useParameterNames = true,
+              },
+
+              closureReturnTypeHints = {
+                enable = "always",
+              },
+
+              discriminantHints = {
+                enable = "always",
+              },
+
+              expressionAdjustmentHints = {
+                enable = "always",
+                mode = "prefix",
+                hideOutsideUnsafe = false,
+              },
+
+              rangeExclusiveHints = {
+                enable = true,
+              },
+
+              implicitDrops = {
+                enable = true,
+              },
+
+              closingBraceHints = {
+                enable = true,
+                minLines = 25,
+              },
+            },
           },
         },
       },
-    },
-    -- DAP configuration
-    -- dap = {},
-  }
+    }
+  end
 end
 
 return M
