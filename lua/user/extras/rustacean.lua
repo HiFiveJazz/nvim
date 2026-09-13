@@ -16,7 +16,7 @@ function M.config()
         -- your global LSP setup (keymaps, etc.)
         lspconfig.on_attach(client, bufnr)
         -- enable native inlay hints (new API: enable(boolean, {bufnr=...}))
-        pcall(vim.lsp.inlay_hint.enable, true, { bufnr = bufnr })
+        -- pcall(vim.lsp.inlay_hint.enable, true, { bufnr = bufnr })
 
       end,
 
