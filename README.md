@@ -42,14 +42,9 @@ cargo install lazygitrs
 In order to install, clone the repository.
 
 ```md
-git clone https://github.com/HiFiveJazz/Neovim-Configuration
-```
-
-2. Move into the Neovim .config directory:
-
-```md
-mv Neovim-Configuration/* ~/.config/nvim/
+cd ~/.config/
+mv nvim nvim.backup/
+git clone https://github.com/HiFiveJazz/nvim
 ```
 
 You're all done!
-
