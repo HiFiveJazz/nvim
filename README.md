@@ -1,8 +1,11 @@
-# Dependencies
+#Installation 
 
-This project requires Neovim. Install via your preferred package manager.
+Follow the steps for your specific operating system!
+- [Arch Linux](#arch-linux)
+- [macOS](#macos)
+- [Windows](#windows)
 
-***Arch Linux***
+## Arch Linux
 
 ```sh
 #Using Pacman
@@ -26,9 +29,13 @@ My configuration also comes with some languages that are installed via Mason, so
 Install Npm via your preferred package manager.
 
 ```sh
-#Using Pacman
+#Using Npm
 sudo npm install -g neovim prettier
+
+#Using Pacman
 sudo pacman -S --noconfirm rustup
+
+#Using Rustup/Cargo
 rustup update stable
 cargo install stylua
 cargo install lazygitrs
@@ -37,7 +44,7 @@ cargo install lazygitrs
 
 You're all done!
 
-***macOS***
+## macOS
 
 ```sh
 #Using Homebrew
@@ -68,8 +75,10 @@ My configuration also comes with some languages that are installed via Mason, so
 
 
 ```sh
-#Using Homebrew
+#Using Npm
 npm install -g neovim prettier
+
+#Using Rustup/Cargo
 rustup default stable
 cargo install stylua
 cargo install lazygitrs
@@ -77,7 +86,7 @@ cargo install lazygitrs
 
 You're all done!
 
-***Windows***
+## Windows
 
 Run the included PowerShell setup script. This script includes
 package dependencies and info about a couple Windows-specific
