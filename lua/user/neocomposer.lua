@@ -10,6 +10,11 @@ local M = {
 }
 
 function M.config()
+  if vim.fn.has("win32") == 1 then
+     vim.g.sqlite_clib_path =
+	 (vim.fn.stdpath("data") .. "/sqlite/sqlite3.dll"):gsub("\\", "/")
+  end
+
   require("NeoComposer").setup({
     notify = true,
     delay_timer = 150,

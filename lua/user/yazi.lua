@@ -39,6 +39,12 @@ function M.config()
 
     log_level = vim.log.levels.OFF,
 
+    hooks = {
+      resolve_relative_path_application = vim.fn.has("win32") == 1
+          and "C:/Program Files/Git/usr/bin/realpath.exe"
+          or "realpath",
+    },
+
     keymaps = {
       show_help = "<f1>",
       open_file_in_vertical_split = "<c-v>",
