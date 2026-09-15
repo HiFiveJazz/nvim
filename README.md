@@ -1,4 +1,4 @@
-#Installation 
+# Installation 
 
 Follow the steps for your specific operating system!
 - [Arch Linux](#arch-linux)
