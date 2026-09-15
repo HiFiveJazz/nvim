@@ -10,6 +10,7 @@ local M = {
 }
 
 function M.config()
+  -- For Windows users
   if vim.fn.has("win32") == 1 then
      vim.g.sqlite_clib_path =
 	 (vim.fn.stdpath("data") .. "/sqlite/sqlite3.dll"):gsub("\\", "/")

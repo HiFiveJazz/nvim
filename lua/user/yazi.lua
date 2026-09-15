@@ -39,6 +39,7 @@ function M.config()
 
     log_level = vim.log.levels.OFF,
 
+	-- For Windows Users
     hooks = {
       resolve_relative_path_application = vim.fn.has("win32") == 1
           and "C:/Program Files/Git/usr/bin/realpath.exe"
