@@ -24,7 +24,7 @@ function M.init()
         capabilities = lspconfig.common_capabilities(),
 
         -- Disable rust-analyzer status notifications.
-        status_notify_level = false,
+        status_notify_level = true,
 
         -- rust-analyzer configuration.
         default_settings = {
@@ -66,7 +66,8 @@ function M.init()
               maxLength = 25,
 
               lifetimeElisionHints = {
-                enable = "always",
+                enable = "skip_trivial",
+                -- enable = "always",
                 useParameterNames = true,
               },
 
@@ -81,7 +82,7 @@ function M.init()
               expressionAdjustmentHints = {
                 enable = "always",
                 mode = "prefix",
-                hideOutsideUnsafe = false,
+                hideOutsideUnsafe = true,
               },
 
               rangeExclusiveHints = {
