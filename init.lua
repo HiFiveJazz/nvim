@@ -19,7 +19,6 @@ spec "user.dap"               -- Debug Adapter Protocol, used for python3
 spec "user.autotag"           -- Automatically update both HTML tags when editing one of them 
 spec "user.cmp"               -- Adds in cool autocompletion 
 spec "user.autopairs"         -- Autocomplete pairs for (),{},& [], $$ for LaTex files, < > for html, and React.js 
--- spec "user.comment"           -- In Normal and Visual Mode, "_/" comments out selected/hovered line(s) 
 spec "user.gitsigns"          -- Shows green, red, and blue lines on the left side in git files 
 spec "user.indentline"        -- Adds in indent lines on the left side for functions and whatnot 
 spec "user.alpha"             -- Adds in nice screen when running "nvim" in terminal
