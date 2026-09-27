@@ -9,7 +9,7 @@ local M = {
 function M.config()
   require("neoscroll").setup({
     mappings = {}, -- we will define our own mappings
-    hide_cursor = true,
+    hide_cursor = false,
     stop_eof = true,
     respect_scrolloff = false,
     cursor_scrolls_alone = true,
