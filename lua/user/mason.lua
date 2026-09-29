@@ -14,7 +14,6 @@ M.execs = {
   "bashls",
   "jsonls",
   "rust_analyzer",
-  "armls",
   -- "ltex",
   -- "texlab",
 }
@@ -36,9 +35,9 @@ function M.config()
       border = "rounded",
     },
 
-    registries = {
-      "file:~/GitHub/mason-registry",
-    },
+    -- registries = {
+    --   "file:~/GitHub/mason-registry",
+    -- },
   }
 
   require("mason-lspconfig").setup {
@@ -54,25 +53,25 @@ function M.config()
     },
   }
 
-  -- vim.lsp.config("armls", {
-  --   cmd = { "armls" },
-  --   filetypes = { "asm" },
-  --
-  --   settings = {
-  --     armls = {
-  --       diagnostics = {
-  --         enable = true,
-  --         disableCategories = {
-  --           -- "invalidOperand",
-  --           -- "tooManyOperands",
-  --           -- "tooFewOperands",
-  --         },
-  --       },
-  --     },
-  --   },
-  -- })
+  vim.lsp.config("armls", {
+    cmd = { "armls" },
+    filetypes = { "asm" },
 
-  -- vim.lsp.enable("armls")
+    settings = {
+      armls = {
+        diagnostics = {
+          enable = true,
+          disableCategories = {
+            -- "invalidOperand",
+            -- "tooManyOperands",
+            -- "tooFewOperands",
+          },
+        },
+      },
+    },
+  })
+
+  vim.lsp.enable("armls")
 end
 
 return M

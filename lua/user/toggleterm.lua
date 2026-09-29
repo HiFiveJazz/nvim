@@ -281,7 +281,7 @@ function M.config()
         return {
           build = string.format('mkdir -p "%s/.build" && cc -O2 "%s" -o "%s"', file_dir, file_abs, out),
           run = string.format(
-            'mkdir -p "%s/.build" && cc -O2 "%s" -o "%s" && "%s"; echo; read -p "Press Enter to close..."',
+			'mkdir -p "%s/.build" && cc -O2 "%s" -o "%s" && "%s"',
             file_dir,
             file_abs,
             out,
