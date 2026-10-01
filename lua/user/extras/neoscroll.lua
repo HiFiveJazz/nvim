@@ -1,9 +1,6 @@
 local M = {
   "karb94/neoscroll.nvim",
   commit = "e786577",
-  dependencies = {
-    "folke/which-key.nvim",
-  },
 }
 
 function M.config()
