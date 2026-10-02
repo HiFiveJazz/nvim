@@ -14,7 +14,7 @@ function M.config()
 
       -- Web
       null_ls.builtins.formatting.prettier,
-      null_ls.builtins.formatting.biome, 
+      null_ls.builtins.formatting.biome,
 
       -- Python
       null_ls.builtins.formatting.black,
