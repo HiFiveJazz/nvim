@@ -2,6 +2,21 @@ local M = {
 	"neovim/nvim-lspconfig",
 	event = { "BufReadPre", "BufNewFile" },
 }
+local servers = {
+	"armls",
+	"clangd",
+	"lua_ls",
+	"harper_ls",
+	"pyright",
+	"cssls",
+	"html",
+	"bashls",
+	"texlab",
+	"vale_ls",
+	"gopls",
+}
+
+
 
 local function install_return_q(dest_buf, origin_buf)
 	vim.b[dest_buf].gd_return_buf = origin_buf
@@ -113,6 +128,17 @@ local function organize_imports(bufnr)
 			end
 		end
 	end
+end
+
+function M.toggle_lsp()
+	local enabled = vim.lsp.is_enabled(servers[1])
+
+	vim.lsp.enable(servers, not enabled)
+
+	vim.notify(
+		"LSP " .. (enabled and "Disabled" or "Enabled"),
+		vim.log.levels.INFO
+	)
 end
 
 M.on_attach = function(client, bufnr)
@@ -264,6 +290,12 @@ function M.config()
 			desc = "Rename",
 			icon = { icon = "󰟵 ", color = "blue" },
 		},
+		{
+			"<leader>lt",
+			"<cmd>lua require('user.lspconfig').toggle_lsp()<cr>",
+			desc = "Toggle LSP",
+			icon = { icon = "󰒍 ", color = "blue" },
+		},
 	})
 
 	wk.add({
@@ -271,18 +303,6 @@ function M.config()
 		{ "<leader>laa", "<cmd>lua vim.lsp.buf.code_action()<cr>", desc = "Code Action", mode = "v" },
 	})
 
-	local servers = {
-    "armls",
-    "clangd",
-		"lua_ls",
-		"pyright",
-		"cssls",
-		"html",
-		"bashls",
-		"texlab",
-		"vale_ls",
-		"gopls",
-	}
 
 	vim.diagnostic.config({
 		signs = true,
